@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import podImg from './assets/pod1.jpeg';
 import podSpec from './assets/pod2.jpeg';
 import mobileHandImg from './assets/Mobile.jpeg';
+import kushSirImg from './assets/Kush Sir.jpeg';
+import vanshTripathiImg from './assets/Vansh Tripathi.jpeg';
 
 const DEMO_VIDEO = 'https://cdn.speedsize.com/3f711f28-1488-44dc-b013-5e43284ac4b0/https://public-web-assets.uh-static.com/web_v2/homepage-v3/app-section/display-videos/ring-new.mp4';
 
@@ -195,12 +197,44 @@ a, button { cursor: none; text-decoration: none; }
 }
 .app-live-screen {
   position: absolute; z-index: 3; overflow: hidden;
-  left: 40.7%; top: 13%;
-  width: 19.6%; aspect-ratio: 9 / 19.4;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.22);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.45), 0 0 24px rgba(77,255,239,0.12);
+  left: 17.2%; right: 17.2%;
+  top: 4.9%; bottom: 5.4%;
+  border-radius: 56px;
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 18px 44px rgba(0,0,0,0.42), 0 0 20px rgba(77,255,239,0.08);
 }
+.tm-wrap { position: relative; overflow: hidden; }
+.tm-wrap::before, .tm-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; z-index: 3; width: 64px; pointer-events: none;
+}
+.tm-wrap::before { left: 0; background: linear-gradient(to right, var(--bg2), transparent); }
+.tm-wrap::after { right: 0; background: linear-gradient(to left, var(--bg2), transparent); }
+.tm-track {
+  display: flex; gap: 14px; width: max-content;
+  animation: tmSlide 34s linear infinite;
+}
+.tm-wrap:hover .tm-track { animation-play-state: paused; }
+@keyframes tmSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tm-card {
+  width: min(360px, 82vw);
+  background: var(--card); border: 1px solid var(--bd);
+  border-radius: 18px; padding: 22px;
+  transition: border-color .3s ease, transform .3s ease, background .4s ease;
+}
+.tm-card:hover { border-color: rgba(77,255,239,.2); transform: translateY(-3px); }
+.tm-avatar {
+  width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--bd);
+}
+.team-card {
+  background: var(--card); border: 1px solid var(--bd); border-radius: 20px; overflow: hidden;
+  transition: border-color .3s ease, transform .3s ease, background .4s ease;
+}
+.team-card:hover { border-color: rgba(77,255,239,.2); transform: translateY(-4px); }
+.team-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; filter: grayscale(.14) contrast(1.05); }
 
 /* ─── Responsive ─────────────────────────────────────────────────── */
 @media (max-width:1024px) {
@@ -242,7 +276,12 @@ a, button { cursor: none; text-decoration: none; }
   .g2r { grid-template-columns:1fr!important; }
   .g4r { grid-template-columns:1fr!important; }
   .app-hand-wrap { width:min(340px, 92vw)!important; }
-  .app-live-screen { left:40.8%!important; top:13.1%!important; width:19.8%!important; border-radius:14px!important; }
+  .app-live-screen {
+    left:17.4%!important; right:17.4%!important;
+    top:5.3%!important; bottom:5.8%!important;
+    border-radius:36px!important;
+  }
+  .tm-wrap::before, .tm-wrap::after { width: 30px!important; }
   .pod-strip { grid-template-columns:1fr!important; }
   /* Problem: hide giant stat number on tiny screens */
   .stat-num { font-size:clamp(72px,18vw,120px)!important; }
@@ -330,6 +369,7 @@ function Nav({ theme, toggleTheme, page, setPage }) {
   }, [open]);
 
   const links = [
+    { label: 'Home', pg: 'home' },
     { label: 'Platform', pg: 'platform' },
     { label: 'Analytics', pg: 'analytics' },
     { label: 'About', pg: 'about' },
@@ -365,7 +405,7 @@ function Nav({ theme, toggleTheme, page, setPage }) {
           {links.map(({ label, pg }) => (
             <button key={label} onClick={() => go(pg)} className="nl" style={{
               background: 'none', border: 'none', padding: 0,
-              color: page === pg && pg !== 'home' ? 'var(--txt)' : undefined,
+              color: page === pg ? 'var(--txt)' : undefined,
             }}>{label}</button>
           ))}
         </div>
@@ -1185,6 +1225,142 @@ function AppPreview() {
   );
 }
 
+// ─── Testimonials ───────────────────────────────────────────────────────────────
+function Testimonials() {
+  useReveal();
+  const items = [
+    {
+      quote: 'Genyx catches rep breakdown before I do. It changed how we coach fatigue in-session.',
+      name: 'Aarav Singh',
+      role: 'Strength Coach, Apex Performance',
+      img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80',
+    },
+    {
+      quote: 'The clean-rep signal made athlete feedback objective. No more guessing on quality.',
+      name: 'Maya Patel',
+      role: 'Head of Sports Science, Iron Lab',
+      img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80',
+    },
+    {
+      quote: 'Zero wearables means zero friction. Athletes just train and we still get real data.',
+      name: 'Noah Kim',
+      role: 'Performance Director, Elevate Gym',
+      img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80',
+    },
+    {
+      quote: 'We scaled from one pod to three facilities without changing our coaching workflow.',
+      name: 'Zara Ali',
+      role: 'Operations Lead, Forge Athletics',
+      img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=160&q=80',
+    },
+  ];
+  const loopItems = [...items, ...items];
+
+  return (
+    <section className="sp sec" style={{
+      background: 'var(--bg2)', paddingTop: 140, paddingBottom: 140,
+      paddingLeft: 80, paddingRight: 80, transition: 'background .4s ease',
+    }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ marginBottom: 44 }}>
+          <span className="tag r">Testimonials</span>
+          <h2 className="r" style={{
+            fontSize: 'clamp(38px, 6vw, 72px)', fontWeight: 700,
+            letterSpacing: '-.028em', lineHeight: .98,
+            color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s',
+          }}>
+            Trusted by coaches.
+          </h2>
+        </div>
+
+        <div className="tm-wrap r" style={{ transitionDelay: '.15s' }}>
+          <div className="tm-track">
+            {loopItems.map((t, i) => (
+              <article key={i} className="tm-card">
+                <p style={{ fontSize: 15, color: 'var(--txt)', lineHeight: 1.74, marginBottom: 18, transition: 'color .4s ease' }}>
+                  "{t.quote}"
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <img src={t.img} alt={t.name} className="tm-avatar" loading="lazy" />
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--txt)', transition: 'color .4s ease' }}>{t.name}</div>
+                    <div style={{ fontSize: 11, color: 'var(--sub)', transition: 'color .4s ease' }}>{t.role}</div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Team ───────────────────────────────────────────────────────────────────────
+function TeamSection() {
+  useReveal();
+  const team = [
+    {
+      name: 'Kush Kadhyan',
+      title: 'Founder & CEO',
+      bio: 'Leads Genyx vision, product direction, and company execution.',
+      img: kushSirImg,
+    },
+    {
+      name: 'Vansh Tripathi',
+      title: 'Co-Tech Lead & Operations Manager (Intern)',
+      bio: 'Supports technology delivery and operational execution across Genyx.',
+      img: vanshTripathiImg,
+    },
+    {
+      name: 'Ashish Upadhyay',
+      title: '',
+      bio: '',
+      img: '',
+    },
+  ];
+  return (
+    <section className="sp sec" style={{
+      background: 'var(--bg)', paddingTop: 140, paddingBottom: 140,
+      paddingLeft: 80, paddingRight: 80, transition: 'background .4s ease',
+    }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ marginBottom: 56 }}>
+          <span className="tag r">The Team</span>
+          <h2 className="r" style={{
+            fontSize: 'clamp(38px, 6vw, 72px)', fontWeight: 700,
+            letterSpacing: '-.028em', lineHeight: .98,
+            color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s',
+          }}>
+            Built by people who coach.
+          </h2>
+        </div>
+
+        <div className="g3r" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}>
+          {team.map((m, i) => (
+            <article key={m.name} className="team-card r" style={{ transitionDelay: `${.12 + i * .08}s` }}>
+              {m.img ? (
+                <img src={m.img} alt={m.name} className="team-img" loading="lazy" />
+              ) : (
+                <div className="team-img" style={{ background: 'linear-gradient(135deg, var(--bg3), var(--bg2))' }} />
+              )}
+              <div style={{ padding: 20 }}>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: 'var(--txt)', marginBottom: 6, transition: 'color .4s ease' }}>{m.name}</h3>
+                {m.title && (
+                  <div style={{ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--a)', marginBottom: 10, transition: 'color .4s ease' }}>{m.title}</div>
+                )}
+                {m.bio && (
+                  <p style={{ fontSize: 13, lineHeight: 1.68, color: 'var(--sub)', transition: 'color .4s ease' }}>{m.bio}</p>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Footer ────────────────────────────────────────────────────────────────────
 function Footer() {
   useReveal();
@@ -1397,6 +1573,9 @@ function AboutPage() {
           ))}
         </div>
       </section>
+
+      <Testimonials />
+      <TeamSection />
 
       <Footer />
     </>
@@ -1832,6 +2011,8 @@ export default function App() {
           <PostWorkout />
           <HowItWorks />
           <AppPreview />
+          <Testimonials />
+          <TeamSection />
           <Footer />
         </>}
         {page === 'platform' && <PlatformPage />}
