@@ -48,6 +48,7 @@ export function Nav({ theme, toggleTheme, page, setPage }) {
     { label: 'Home', pg: 'home' },
     { label: 'Platform', pg: 'platform' },
     { label: 'Analytics', pg: 'analytics' },
+    { label: 'ROI', pg: 'roi' },
     { label: 'About', pg: 'about' },
     { label: 'Contact', pg: 'contact' },
   ];
@@ -66,13 +67,20 @@ export function Nav({ theme, toggleTheme, page, setPage }) {
         transition: 'background .35s ease, border-color .35s ease',
       }}>
         <button onClick={() => go('home')} style={{ display: 'flex', alignItems: 'center', gap: 9, zIndex: 101, background: 'none', border: 'none', padding: 0, justifySelf: 'start' }}>
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-            <polygon points="10,1.5 18.5,6 18.5,14 10,18.5 1.5,14 1.5,6" style={{ stroke: 'var(--a)', transition: 'stroke .4s ease' }} strokeWidth="1.4" fill="none" />
-            <line x1="10" y1="1.5" x2="10" y2="18.5" style={{ stroke: 'var(--a)', transition: 'stroke .4s ease' }} strokeWidth="1.4" opacity=".28" />
-            <line x1="1.5" y1="6" x2="18.5" y2="14" style={{ stroke: 'var(--a)', transition: 'stroke .4s ease' }} strokeWidth="1.4" opacity=".28" />
-            <line x1="18.5" y1="6" x2="1.5" y2="14" style={{ stroke: 'var(--a)', transition: 'stroke .4s ease' }} strokeWidth="1.4" opacity=".28" />
-          </svg>
-          <span style={{ fontWeight: 600, fontSize: 13, letterSpacing: '.12em', color: 'var(--txt)', transition: 'color .4s ease' }}>GENYX</span>
+          <img
+            src="/genyx-logo.svg"
+            alt="Genyx"
+            style={{
+              width: 42,
+              height: 42,
+              borderRadius: '50%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              transform: 'scale(1.2)',
+              border: '1px solid var(--bd)',
+              display: 'block',
+            }}
+          />
         </button>
 
         <div className="nm" style={{ display: 'flex', gap: 36 }}>

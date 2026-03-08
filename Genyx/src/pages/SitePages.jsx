@@ -168,7 +168,7 @@ function Hero() {
           <span className="tag" style={{ display: 'inline-block', margin: 0 }}>AI Movement Intelligence</span>
         </div>
 
-        {/* Hero headline — very large */}
+        {/* Hero headline - very large */}
         <h1 style={{
           fontSize: 'clamp(60px, 10.5vw, 126px)',
           fontWeight: 700, lineHeight: .98, letterSpacing: '-.03em',
@@ -251,14 +251,14 @@ function PodSection() {
           </div>
         </div>
 
-        {/* Hero photo — the real Genyx Pod in a premium gym */}
+        {/* Hero photo - the real Genyx Pod in a premium gym */}
         <div className="r" style={{
           position: 'relative', borderRadius: '20px 20px 0 0', overflow: 'hidden',
           aspectRatio: '16/7', transitionDelay: '.15s',
         }}>
           <img
             src={podImg}
-            alt="Genyx Pod deployed in a premium gym — AI camera on floor stand near dumbbell rack"
+            alt="Genyx Pod deployed in a premium gym - AI camera on floor stand near dumbbell rack"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 55%', display: 'block' }}
           />
           {/* Subtle dark vignette overlay */}
@@ -266,13 +266,13 @@ function PodSection() {
             position: 'absolute', inset: 0,
             background: 'linear-gradient(to right, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.35) 100%)',
           }} />
-          {/* Pod callout — bottom-left overlay */}
+          {/* Pod callout - bottom-left overlay */}
           <div style={{
             position: 'absolute', bottom: 32, left: 36,
             display: 'flex', flexDirection: 'column', gap: 4,
           }}>
             <span style={{ fontSize: 9, color: 'rgba(77,255,239,.8)', letterSpacing: '.2em', textTransform: 'uppercase' }}>
-              Genyx Pod — Floor Stand
+              Genyx Pod - Floor Stand
             </span>
             <span style={{ fontSize: 16, fontWeight: 600, color: '#fff' }}>
               AI vision. No wearables.
@@ -350,7 +350,7 @@ function PodSpec() {
         }}>
           <img
             src={podSpec}
-            alt="Genyx Pod technical specifications — floor stand with arducam 1080p camera, ball head, height adjustment"
+            alt="Genyx Pod technical specifications - floor stand with arducam 1080p camera, ball head, height adjustment"
             style={{ width: '100%', display: 'block', objectFit: 'cover' }}
           />
           {/* Subtle border overlay */}
@@ -408,7 +408,7 @@ function Problem() {
                 of reps go<br />unvalidated.
               </div>
               <p style={{ fontSize: 15, color: 'var(--sub)', lineHeight: 1.65, transition: 'color .4s ease' }}>
-                Training tools track inputs — not outcomes.
+                Training tools track inputs - not outcomes.
               </p>
             </div>
           </div>
@@ -573,7 +573,7 @@ function PostWorkout() {
             {[
               ['Clean Reps Completed', 'Every validated rep stored per session.'],
               ['Movement Quality State', 'Solid. Inconsistent. Breaking Down.'],
-              ['Fatigue & Form Degradation', 'Where form broke — not just when.'],
+              ['Fatigue & Form Degradation', 'Where form broke - not just when.'],
               ['Effort Drop-Off Point', 'The exact rep where output declined.'],
               ['Repetitive Stress Indicator', 'Catch compounding errors before injury.'],
             ].map(([t, d], i) => (
@@ -676,7 +676,7 @@ function HowItWorks() {
         </div>
         {[
           ['Camera pod captures movement', 'Fixed overhead or side-angle. No setup. No per-user calibration. Plug in, point, run.'],
-          ['AI extracts rep-level signals in real time', 'Joint angles, velocity curves, timing — rep by rep — as the set unfolds. Frame-level accuracy.'],
+          ['AI extracts rep-level signals in real time', 'Joint angles, velocity curves, timing - rep by rep - as the set unfolds. Frame-level accuracy.'],
           ['Intelligence delivered instantly', 'Live signals to the display in under 200ms. Full post-session analytics within seconds.'],
         ].map(([title, desc], i) => (
           <div key={i}>
@@ -702,7 +702,7 @@ function AppPreview() {
   useReveal();
   return (
     <section style={{ background: '#050505', overflow: 'hidden', position: 'relative' }}>
-      {/* Always-dark section — accent color and white text forced */}
+      {/* Always-dark section - accent color and white text forced */}
 
       {/* Headline */}
       <div className="sp r" style={{
@@ -730,11 +730,11 @@ function AppPreview() {
           maxWidth: 380, margin: '24px auto 0', lineHeight: 1.7, fontWeight: 300,
           transitionDelay: '.1s',
         }}>
-          Every rep. Every signal. Visible in real time — no equipment attached.
+          Every rep. Every signal. Visible in real time - no equipment attached.
         </p>
       </div>
 
-      {/* Handset preview — live screen fitted into in-hand phone */}
+      {/* Handset preview - live screen fitted into in-hand phone */}
       <div className="app-hand-zone">
         <div className="app-hand-glow" />
         <div className="app-hand-wrap r" style={{ transitionDelay: '.16s' }}>
@@ -914,23 +914,45 @@ function TeamSection() {
 // ─── Footer ────────────────────────────────────────────────────────────────────
 function Footer() {
   useReveal();
+  const goPage = (path) => (e) => {
+    e.preventDefault();
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   return (
-    <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--div)', transition: 'background .4s ease, border-color .4s ease' }}>
-      <div className="sp" style={{ padding: '160px 80px', textAlign: 'center', maxWidth: 740, margin: '0 auto' }}>
+    <footer style={{
+      background: 'var(--bg)',
+      borderTop: '1px solid var(--div)',
+      transition: 'background .4s ease, border-color .4s ease',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        background: 'radial-gradient(ellipse 60% 40% at 50% 0%, var(--at) 0%, transparent 72%)',
+      }} />
+
+      <div className="sp" style={{ padding: '130px 80px 96px', textAlign: 'center', maxWidth: 760, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <span className="tag r" style={{ display: 'block', textAlign: 'center' }}>Early Access</span>
         <h2 className="r" style={{
-          fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700,
+          fontSize: 'clamp(38px, 5.7vw, 68px)', fontWeight: 700,
           letterSpacing: '-.028em', lineHeight: 1.02, marginBottom: 20,
           color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.1s',
         }}>
-          Coaching-grade intelligence.<br />
-          <span style={{ color: 'var(--dim)', transition: 'color .4s ease' }}>At scale.</span>
+          Built for serious<br />
+          <span style={{ color: 'var(--a)', transition: 'color .4s ease' }}>coaching outcomes.</span>
         </h2>
         <p className="r" style={{ color: 'var(--sub)', fontSize: 16, lineHeight: 1.75, marginBottom: 48, transition: 'color .4s ease', transitionDelay: '.2s' }}>
-          Built for serious athletes, elite coaches, and performance facilities ready to move beyond guesswork.
+          Genyx helps teams coach with measurable movement intelligence, not assumptions.
         </p>
         <div className="r" style={{ transitionDelay: '.3s' }}>
-          <button className="cp" style={{
+          <button className="cp" onClick={goPage('/contact')} style={{
             background: 'transparent', border: '1px solid var(--a)',
             borderRadius: 100, padding: '16px 52px',
             color: 'var(--txt)', fontSize: 13, fontWeight: 500, letterSpacing: '.07em',
@@ -942,20 +964,43 @@ function Footer() {
       </div>
 
       <div className="sp" style={{
-        borderTop: '1px solid var(--div)', padding: '26px 80px',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        flexWrap: 'wrap', gap: 16, transition: 'border-color .4s ease',
+        borderTop: '1px solid var(--div)',
+        padding: '24px 80px 28px',
+        transition: 'border-color .4s ease',
+        position: 'relative',
+        zIndex: 1,
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
-            <polygon points="10,1.5 18.5,6 18.5,14 10,18.5 1.5,14 1.5,6" style={{ stroke: 'var(--a)' }} strokeWidth="1.4" fill="none" />
-          </svg>
-          <span style={{ fontWeight: 600, fontSize: 11, letterSpacing: '.12em', color: 'var(--txt)', transition: 'color .4s ease' }}>GENYX</span>
+        <div className="footer-bottom-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'auto 1fr auto', gap: 20, alignItems: 'center' }}>
+          <a href="/" onClick={goPage('/')} style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <img
+              src="/genyx-logo.svg"
+              alt="Genyx"
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: '50%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                border: '1px solid var(--bd)',
+                display: 'block',
+              }}
+            />
+            <span style={{ color: 'var(--txt)', fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', fontWeight: 600 }}>Genyx</span>
+          </a>
+          <span style={{ fontSize: 11, color: 'var(--dim)', letterSpacing: '.08em', transition: 'color .4s ease', textAlign: 'center' }}>
+            Movement is data. Data is truth.
+          </span>
+          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            {[
+              ['Platform', '/platform'],
+              ['Analytics', '/analytics'],
+              ['ROI', '/roi'],
+              ['Contact', '/contact'],
+            ].map(([label, path]) => (
+              <a key={label} href={path} onClick={goPage(path)} className="nl" style={{ fontSize: 12 }}>{label}</a>
+            ))}
+          </div>
         </div>
-        <div style={{ display: 'flex', gap: 28 }}>
-          {['Privacy', 'Terms', 'Contact'].map(l => <a key={l} href="#" className="nl" style={{ fontSize: 12 }}>{l}</a>)}
-        </div>
-        <span style={{ fontSize: 11, color: 'var(--dim)', letterSpacing: '.07em', transition: 'color .4s ease' }}>Movement is data. Data is truth.</span>
       </div>
     </footer>
   );
@@ -989,7 +1034,7 @@ export function AboutPage() {
             maxWidth: 560, marginTop: 40, fontWeight: 300, transition: 'color .4s ease',
             transitionDelay: '.18s',
           }}>
-            Genyx was built on a single conviction: coaches and athletes deserve the same precision sports science that elite labs have — without the lab, the wearables, or the setup.
+            Genyx was built on a single conviction: coaches and athletes deserve the same precision sports science that elite labs have - without the lab, the wearables, or the setup.
           </p>
         </div>
       </section>
@@ -1009,16 +1054,16 @@ export function AboutPage() {
                   of reps go unvalidated<br />in every training session.
                 </div>
                 <p style={{ fontSize: 15, color: 'var(--sub)', lineHeight: 1.65, transition: 'color .4s ease' }}>
-                  Existing tools count inputs — sets, reps, weight. None of them understand movement quality. That's the gap Genyx was built to close.
+                  Existing tools count inputs - sets, reps, weight. None of them understand movement quality. That's the gap Genyx was built to close.
                 </p>
               </div>
             </div>
           </div>
           <div className="div" style={{ marginBottom: 56 }} />
           {[
-            ['The Equipment Problem', 'Gym equipment records that a session happened. Barbells don\'t know if your hips shifted on rep 8. Cables don\'t know if your form degraded under fatigue. Hardware tracks inputs — never outcomes.'],
+            ['The Equipment Problem', 'Gym equipment records that a session happened. Barbells don\'t know if your hips shifted on rep 8. Cables don\'t know if your form degraded under fatigue. Hardware tracks inputs - never outcomes.'],
             ['The Coach Problem', 'Even elite coaches can\'t watch every rep of every set across every athlete simultaneously. Visual observation has limits. Fatigue is estimated. Form breaks are caught after, not during.'],
-            ['The Data Problem', 'Wearables require attachment, calibration, and maintenance per athlete. They measure proximity and acceleration — not movement mechanics. Rep quality has never been measurable at scale. Until now.'],
+            ['The Data Problem', 'Wearables require attachment, calibration, and maintenance per athlete. They measure proximity and acceleration - not movement mechanics. Rep quality has never been measurable at scale. Until now.'],
           ].map(([cat, line], i) => (
             <div key={i} className="r" style={{ transitionDelay: `${.1 + i * .1}s` }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 28, padding: '28px 0' }}>
@@ -1045,15 +1090,15 @@ export function AboutPage() {
           </h2>
           <div className="r" style={{ transitionDelay: '.16s', marginBottom: 80 }}>
             <p style={{ fontSize: 'clamp(16px, 1.8vw, 20px)', color: 'var(--sub)', lineHeight: 1.72, maxWidth: 720, fontWeight: 300, transition: 'color .4s ease' }}>
-              The Genyx Pod uses an Arducam 1080P camera module inside a custom-built, precision-machined housing. Mounted on a weighted aluminum floor stand with ball-head articulation and height adjustment from 0.9m to 1.6m, it deploys in minutes — in any facility, for any athlete. The AI processes every frame locally and delivers coaching signals in under 200 milliseconds.
+              The Genyx Pod uses an Arducam 1080P camera module inside a custom-built, precision-machined housing. Mounted on a weighted aluminum floor stand with ball-head articulation and height adjustment from 0.9m to 1.6m, it deploys in minutes - in any facility, for any athlete. The AI processes every frame locally and delivers coaching signals in under 200 milliseconds.
             </p>
           </div>
           <div className="g2r" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 1, background: 'var(--div)', borderRadius: 20, overflow: 'hidden' }}>
             {[
               ['Arducam 1080P', 'Custom grey housing', 'The vision module at the heart of the Pod. High frame rate, low latency, optimized for movement capture in gym lighting conditions.'],
-              ['Computer Vision AI', 'Frame-level accuracy', 'Joint angle extraction, velocity measurement, range-of-motion tracking — all without body-worn sensors. Processed rep by rep.'],
+              ['Computer Vision AI', 'Frame-level accuracy', 'Joint angle extraction, velocity measurement, range-of-motion tracking - all without body-worn sensors. Processed rep by rep.'],
               ['< 200ms Latency', 'Live coaching feedback', 'Signals are processed and delivered to the coaching display before a rep completes. Feedback that changes behavior in real time.'],
-              ['Zero Calibration', 'Any athlete, instantly', 'No setup per user. No body measurements entered. A new athlete walks in — the system reads their movement from frame one.'],
+              ['Zero Calibration', 'Any athlete, instantly', 'No setup per user. No body measurements entered. A new athlete walks in - the system reads their movement from frame one.'],
             ].map(([title, sub, desc], i) => (
               <div key={i} className="r" style={{ background: 'var(--card)', padding: '44px 40px', transition: 'background .4s ease', transitionDelay: `${.08 + i * .08}s` }}>
                 <div style={{ fontSize: 12, color: 'var(--a)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 8, transition: 'color .4s ease' }}>{sub}</div>
@@ -1095,9 +1140,9 @@ export function AboutPage() {
           <h2 className="r" style={{ fontSize: 'clamp(44px, 7vw, 80px)', fontWeight: 700, letterSpacing: '-.028em', lineHeight: .98, marginBottom: 80, color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s' }}>Three principles.</h2>
           <div className="g3r" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 1, background: 'var(--div)', borderRadius: 20, overflow: 'hidden' }}>
             {[
-              ['Precision', 'Every rep is a data point. Every session tells a story. We read both at frame-level resolution — not by approximation.'],
+              ['Precision', 'Every rep is a data point. Every session tells a story. We read both at frame-level resolution - not by approximation.'],
               ['Accessibility', 'No wearables. No calibration. No friction between the athlete and accurate data. Intelligence that works the moment you do.'],
-              ['Integrity', 'We build for coaches who demand truth — not dashboards that confirm what you already believe. Data should challenge, not validate.'],
+              ['Integrity', 'We build for coaches who demand truth - not dashboards that confirm what you already believe. Data should challenge, not validate.'],
             ].map(([title, desc], i) => (
               <div key={i} className="r" style={{ background: 'var(--card)', padding: '48px 40px', transition: 'background .4s ease', transitionDelay: `${.08 + i * .1}s` }}>
                 <div style={{ fontSize: 'clamp(40px,6vw,72px)', fontWeight: 700, color: 'var(--num)', letterSpacing: '-.03em', marginBottom: 28, transition: 'color .4s ease' }}>0{i + 1}</div>
@@ -1243,8 +1288,9 @@ export function ContactPage() {
 
   const switchTimeoutRef = useRef(null);
   const formZoneRef = useRef(null);
-  const memberRanges = ['1-24 members', '25-100 members', '101-250 members', '251-500 members', '500+ members'];
   const activeMeta = roleData[activeRole];
+  const memberCount = Math.max(1, Number(form.memberRange) || 1);
+  const memberCountLabel = `${memberCount.toLocaleString()} members`;
 
   useEffect(() => () => {
     if (switchTimeoutRef.current) clearTimeout(switchTimeoutRef.current);
@@ -1471,28 +1517,26 @@ export function ContactPage() {
                       <div className="contact-sec-lbl">Beta Fit</div>
                       <div className="div" />
                       <div className="contact-grid-2">
-                        <div>
-                          <label className={`contact-lbl${errors.roleTitle ? ' is-err' : ''}`}>Role / Title</label>
-                          <div className="fiw">
-                            <select className={`fi${errors.roleTitle ? ' fi-err' : ''}`} value={form.roleTitle} onChange={upd('roleTitle')} data-h>
-                              <option value="">Select</option>
-                              <option>Head Coach</option><option>S&C Coach</option><option>Gym Owner/Operator</option><option>Personal Trainer</option>
-                              <option>Athletic Director</option><option>Sports Scientist</option><option>Other</option>
-                            </select>
-                          </div>
-                          {err('roleTitle')}
-                        </div>
-                        <div>
-                          <label className={`contact-lbl${errors.facilityType ? ' is-err' : ''}`}>Facility Type</label>
-                          <div className="fiw">
-                            <select className={`fi${errors.facilityType ? ' fi-err' : ''}`} value={form.facilityType} onChange={upd('facilityType')} data-h>
-                              <option value="">Select</option>
-                              <option>Commercial Gym/Box</option><option>CrossFit/Functional Fitness</option><option>Sports Performance Facility</option><option>Professional Sports Club</option>
-                              <option>University/College Athletics</option><option>Boutique Studio</option><option>Physical Therapy/Rehab</option><option>Corporate Wellness</option>
-                            </select>
-                          </div>
-                          {err('facilityType')}
-                        </div>
+                        <ContactSelect
+                          label="Role / Title"
+                          value={form.roleTitle}
+                          onChange={(v) => {
+                            setForm((f) => ({ ...f, roleTitle: v }));
+                            setErrors((prev) => ({ ...prev, roleTitle: '' }));
+                          }}
+                          error={errors.roleTitle}
+                          options={['Head Coach', 'S&C Coach', 'Gym Owner/Operator', 'Personal Trainer', 'Athletic Director', 'Sports Scientist', 'Other']}
+                        />
+                        <ContactSelect
+                          label="Facility Type"
+                          value={form.facilityType}
+                          onChange={(v) => {
+                            setForm((f) => ({ ...f, facilityType: v }));
+                            setErrors((prev) => ({ ...prev, facilityType: '' }));
+                          }}
+                          error={errors.facilityType}
+                          options={['Commercial Gym/Box', 'CrossFit/Functional Fitness', 'Sports Performance Facility', 'Professional Sports Club', 'University/College Athletics', 'Boutique Studio', 'Physical Therapy/Rehab', 'Corporate Wellness']}
+                        />
                       </div>
                       <div className="contact-grid-2">
                         <div>
@@ -1508,8 +1552,8 @@ export function ContactPage() {
                       </div>
                       <div>
                         <label className="contact-lbl">Member count range</label>
-                        <div className="contact-range-val">{memberRanges[form.memberRange]}</div>
-                        <input className="contact-range" type="range" min="0" max="4" step="1" value={form.memberRange} onChange={upd('memberRange')} data-h />
+                        <div className="contact-range-val">{memberCountLabel}</div>
+                        <input className="contact-range" type="range" min="1" max="5000" step="1" value={memberCount} onChange={upd('memberRange')} data-h />
                       </div>
                       <div>
                         <label className={`contact-lbl${errors.trainingTracking ? ' is-err' : ''}`}>How do you currently track training?</label>
@@ -1533,15 +1577,16 @@ export function ContactPage() {
                         </div>
                         {err('painPoint')}
                       </div>
-                      <div>
-                        <label className={`contact-lbl${errors.startTimeline ? ' is-err' : ''}`}>Start timeline</label>
-                        <div className="fiw">
-                          <select className={`fi${errors.startTimeline ? ' fi-err' : ''}`} value={form.startTimeline} onChange={upd('startTimeline')} data-h>
-                            <option value="">Select</option><option>Immediately</option><option>Within 1 month</option><option>1-3 months</option><option>3-6 months</option><option>Exploring</option>
-                          </select>
-                        </div>
-                        {err('startTimeline')}
-                      </div>
+                      <ContactSelect
+                        label="Start timeline"
+                        value={form.startTimeline}
+                        onChange={(v) => {
+                          setForm((f) => ({ ...f, startTimeline: v }));
+                          setErrors((prev) => ({ ...prev, startTimeline: '' }));
+                        }}
+                        error={errors.startTimeline}
+                        options={['Immediately', 'Within 1 month', '1-3 months', '3-6 months', 'Exploring']}
+                      />
                       <div>
                         <label className="contact-lbl">Anything else we should know?</label>
                         <textarea className="fi" rows={4} value={form.betaNotes} onChange={upd('betaNotes')} data-h />
@@ -1554,24 +1599,26 @@ export function ContactPage() {
                       <div className="contact-sec-lbl">Investor Profile</div>
                       <div className="div" />
                       <div className="contact-grid-2">
-                        <div>
-                          <label className={`contact-lbl${errors.investorType ? ' is-err' : ''}`}>Investor type</label>
-                          <div className="fiw">
-                            <select className={`fi${errors.investorType ? ' fi-err' : ''}`} value={form.investorType} onChange={upd('investorType')} data-h>
-                              <option value="">Select</option><option>Angel</option><option>Seed/Micro-VC</option><option>Series A+ VC</option><option>Family Office</option><option>Corporate/Strategic</option><option>Sports & Fitness Fund</option><option>Deep Tech Fund</option>
-                            </select>
-                          </div>
-                          {err('investorType')}
-                        </div>
-                        <div>
-                          <label className={`contact-lbl${errors.checkSize ? ' is-err' : ''}`}>Typical check size</label>
-                          <div className="fiw">
-                            <select className={`fi${errors.checkSize ? ' fi-err' : ''}`} value={form.checkSize} onChange={upd('checkSize')} data-h>
-                              <option value="">Select</option><option>$25K-$100K</option><option>$100K-$250K</option><option>$250K-$500K</option><option>$500K-$1M</option><option>$1M-$2M</option><option>$2M-$5M</option><option>$5M+</option>
-                            </select>
-                          </div>
-                          {err('checkSize')}
-                        </div>
+                        <ContactSelect
+                          label="Investor type"
+                          value={form.investorType}
+                          onChange={(v) => {
+                            setForm((f) => ({ ...f, investorType: v }));
+                            setErrors((prev) => ({ ...prev, investorType: '' }));
+                          }}
+                          error={errors.investorType}
+                          options={['Angel', 'Seed/Micro-VC', 'Series A+ VC', 'Family Office', 'Corporate/Strategic', 'Sports & Fitness Fund', 'Deep Tech Fund']}
+                        />
+                        <ContactSelect
+                          label="Typical check size"
+                          value={form.checkSize}
+                          onChange={(v) => {
+                            setForm((f) => ({ ...f, checkSize: v }));
+                            setErrors((prev) => ({ ...prev, checkSize: '' }));
+                          }}
+                          error={errors.checkSize}
+                          options={['$25K-$100K', '$100K-$250K', '$250K-$500K', '$500K-$1M', '$1M-$2M', '$2M-$5M', '$5M+']}
+                        />
                       </div>
                       <div>
                         <label className={`contact-lbl${errors.thesisAlignment ? ' is-err' : ''}`}>Investment thesis alignment</label>
@@ -1612,24 +1659,26 @@ export function ContactPage() {
                       <div className="contact-sec-lbl">Product Context</div>
                       <div className="div" />
                       <div className="contact-grid-2">
-                        <div>
-                          <label className={`contact-lbl${errors.inquiryType ? ' is-err' : ''}`}>Inquiry type</label>
-                          <div className="fiw">
-                            <select className={`fi${errors.inquiryType ? ' fi-err' : ''}`} value={form.inquiryType} onChange={upd('inquiryType')} data-h>
-                              <option value="">Select</option><option>Pricing & Plans</option><option>Technical Specs</option><option>Demo Request</option><option>Enterprise Deployment</option><option>API/Integration</option><option>Multi-Location Rollout</option><option>Hardware Requirements</option>
-                            </select>
-                          </div>
-                          {err('inquiryType')}
-                        </div>
-                        <div>
-                          <label className={`contact-lbl${errors.deploymentScale ? ' is-err' : ''}`}>Deployment scale</label>
-                          <div className="fiw">
-                            <select className={`fi${errors.deploymentScale ? ' fi-err' : ''}`} value={form.deploymentScale} onChange={upd('deploymentScale')} data-h>
-                              <option value="">Select</option><option>Single location</option><option>2-5 locations</option><option>6-10 locations</option><option>11-20 locations</option><option>20+ locations/enterprise</option>
-                            </select>
-                          </div>
-                          {err('deploymentScale')}
-                        </div>
+                        <ContactSelect
+                          label="Inquiry type"
+                          value={form.inquiryType}
+                          onChange={(v) => {
+                            setForm((f) => ({ ...f, inquiryType: v }));
+                            setErrors((prev) => ({ ...prev, inquiryType: '' }));
+                          }}
+                          error={errors.inquiryType}
+                          options={['Pricing & Plans', 'Technical Specs', 'Demo Request', 'Enterprise Deployment', 'API/Integration', 'Multi-Location Rollout', 'Hardware Requirements']}
+                        />
+                        <ContactSelect
+                          label="Deployment scale"
+                          value={form.deploymentScale}
+                          onChange={(v) => {
+                            setForm((f) => ({ ...f, deploymentScale: v }));
+                            setErrors((prev) => ({ ...prev, deploymentScale: '' }));
+                          }}
+                          error={errors.deploymentScale}
+                          options={['Single location', '2-5 locations', '6-10 locations', '11-20 locations', '20+ locations/enterprise']}
+                        />
                       </div>
                       <div>
                         <label className={`contact-lbl${errors.integrations ? ' is-err' : ''}`}>Integrations you need</label>
@@ -1642,15 +1691,16 @@ export function ContactPage() {
                         </div>
                         {err('integrations')}
                       </div>
-                      <div>
-                        <label className={`contact-lbl${errors.decisionTimeline ? ' is-err' : ''}`}>Decision timeline</label>
-                        <div className="fiw">
-                          <select className={`fi${errors.decisionTimeline ? ' fi-err' : ''}`} value={form.decisionTimeline} onChange={upd('decisionTimeline')} data-h>
-                            <option value="">Select</option><option>ASAP</option><option>Within 1 month</option><option>1-3 months</option><option>3-6 months</option><option>Just researching</option>
-                          </select>
-                        </div>
-                        {err('decisionTimeline')}
-                      </div>
+                      <ContactSelect
+                        label="Decision timeline"
+                        value={form.decisionTimeline}
+                        onChange={(v) => {
+                          setForm((f) => ({ ...f, decisionTimeline: v }));
+                          setErrors((prev) => ({ ...prev, decisionTimeline: '' }));
+                        }}
+                        error={errors.decisionTimeline}
+                        options={['ASAP', 'Within 1 month', '1-3 months', '3-6 months', 'Just researching']}
+                      />
                       <div>
                         <label className={`contact-lbl${errors.productQuestion ? ' is-err' : ''}`}>Your question or requirements</label>
                         <textarea className={`fi${errors.productQuestion ? ' fi-err' : ''}`} rows={6} style={{ minHeight: 120 }} value={form.productQuestion} onChange={upd('productQuestion')} data-h />
@@ -1789,9 +1839,9 @@ export function PlatformPage() {
           }}>Capture. Analyze.<br />Deliver.</h2>
 
           {[
-            ['Capture', 'The Genyx Pod mounts in your facility — floor stand or fixed. Point it at the platform. No per-athlete setup. No wearables. The 1080P Arducam vision module starts reading movement the moment training begins.'],
-            ['Analyze', 'Computer vision AI processes every frame in real time. Joint angles, velocity curves, rep timing, range of motion — extracted rep by rep. The system understands the difference between a clean lift and a compromised one.'],
-            ['Deliver', 'Signals reach your display in under 200ms. Coaches see quality scores, fatigue state, and rep-level data live — while the set is happening. Full analytics hit the dashboard the moment the session ends.'],
+            ['Capture', 'The Genyx Pod mounts in your facility - floor stand or fixed. Point it at the platform. No per-athlete setup. No wearables. The 1080P Arducam vision module starts reading movement the moment training begins.'],
+            ['Analyze', 'Computer vision AI processes every frame in real time. Joint angles, velocity curves, rep timing, range of motion - extracted rep by rep. The system understands the difference between a clean lift and a compromised one.'],
+            ['Deliver', 'Signals reach your display in under 200ms. Coaches see quality scores, fatigue state, and rep-level data live - while the set is happening. Full analytics hit the dashboard the moment the session ends.'],
           ].map(([title, desc], i) => (
             <div key={i}>
               <div className="step-g r" style={{ display: 'grid', gridTemplateColumns: '96px 1fr', gap: 40, padding: '52px 0', transitionDelay: `${.08 + i * .12}s` }}>
@@ -1828,7 +1878,7 @@ export function PlatformPage() {
             <img src={podImg} alt="Genyx Pod in gym" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 55%', display: 'block' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.35) 100%)' }} />
             <div style={{ position: 'absolute', bottom: 32, left: 36 }}>
-              <span style={{ fontSize: 9, color: 'rgba(77,255,239,.8)', letterSpacing: '.2em', textTransform: 'uppercase', display: 'block', marginBottom: 4 }}>Genyx Pod — Floor Stand</span>
+              <span style={{ fontSize: 9, color: 'rgba(77,255,239,.8)', letterSpacing: '.2em', textTransform: 'uppercase', display: 'block', marginBottom: 4 }}>Genyx Pod - Floor Stand</span>
               <span style={{ fontSize: 16, fontWeight: 600, color: '#fff' }}>Deploy anywhere. Zero configuration.</span>
             </div>
             <div style={{ position: 'absolute', top: 24, right: 24, display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 100, padding: '6px 14px' }}>
@@ -1860,7 +1910,7 @@ export function PlatformPage() {
           <div className="g2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: 'var(--div)', borderRadius: 20, overflow: 'hidden' }}>
             {[
               ['Zero Wearables', 'Athletes train without attaching anything. No sensors. No bands. No friction before a session starts.'],
-              ['Any Athlete, Instantly', 'No per-user calibration. A new athlete walks in — the system reads them immediately.'],
+              ['Any Athlete, Instantly', 'No per-user calibration. A new athlete walks in - the system reads them immediately.'],
               ['Multi-Location Ready', 'Deploy pods across facilities. All sessions flow into one dashboard. One view of your entire operation.'],
               ['Sub-200ms Live Signals', 'Coaching feedback reaches the display before a rep is finished. Real-time means real-time.'],
               ['Session-Level History', 'Every rep from every session is stored. Track improvement, fatigue patterns, and injury risk across weeks.'],
@@ -1907,7 +1957,7 @@ export function AnalyticsPage() {
             maxWidth: 500, marginTop: 40, fontWeight: 300, transition: 'color .4s ease',
             transitionDelay: '.18s',
           }}>
-            Genyx analytics go beyond rep counts. We track quality, fatigue, velocity, and form — session by session, rep by rep.
+            Genyx analytics go beyond rep counts. We track quality, fatigue, velocity, and form - session by session, rep by rep.
           </p>
         </div>
       </section>
@@ -1924,12 +1974,12 @@ export function AnalyticsPage() {
           </h2>
           <div className="g3r" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--div)', borderRadius: 20, overflow: 'hidden' }}>
             {[
-              ['Form Quality', 'Rep-by-rep scoring of movement mechanics. Clean, Inconsistent, or Breaking Down — classified per set.'],
+              ['Form Quality', 'Rep-by-rep scoring of movement mechanics. Clean, Inconsistent, or Breaking Down - classified per set.'],
               ['Fatigue State', 'Detects velocity loss and range-of-motion decline as they happen. Catch breakdown before failure.'],
               ['Clean Reps', 'Only reps that meet quality thresholds are counted as clean. Partial reps and form breaks are flagged.'],
               ['Velocity Curves', 'Bar path and joint velocity plotted across every rep of every set. See where speed drops.'],
-              ['Joint Angles', 'Hip, knee, and shoulder angles tracked at key phases of each lift — without any body-worn sensors.'],
-              ['Effort Drop-Off', 'The exact rep where output declined. Not an estimate — derived from frame-level movement data.'],
+              ['Joint Angles', 'Hip, knee, and shoulder angles tracked at key phases of each lift - without any body-worn sensors.'],
+              ['Effort Drop-Off', 'The exact rep where output declined. Not an estimate - derived from frame-level movement data.'],
             ].map(([title, desc], i) => (
               <div key={i} className="r" style={{
                 background: 'var(--card)', padding: '40px 36px',
@@ -2011,7 +2061,7 @@ export function AnalyticsPage() {
           </h2>
           <div className="g2r" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: 'var(--div)', borderRadius: 20, overflow: 'hidden' }}>
             {[
-              ['Session Summary', 'Clean rep count, quality rating, fatigue progression, and effort drop-off point — delivered instantly.'],
+              ['Session Summary', 'Clean rep count, quality rating, fatigue progression, and effort drop-off point - delivered instantly.'],
               ['Trend Analysis', 'Compare sessions over time. See if fatigue is compounding, form is improving, or intensity is sustainable.'],
               ['Injury Risk Signals', 'Repetitive stress patterns flagged before they accumulate. Protect athletes from compounding errors.'],
               ['Coach Export', 'Full session data available for coaching review. Share with athletes or integrate into your programming.'],
@@ -2021,6 +2071,172 @@ export function AnalyticsPage() {
                 <p style={{ fontSize: 14, color: 'var(--sub)', lineHeight: 1.72, fontWeight: 300, transition: 'color .4s ease' }}>{desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
+}
+
+// ─── ROI Page ─────────────────────────────────────────────────────────────────────
+export function ROIPage() {
+  useReveal();
+  const [inputs, setInputs] = useState({
+    locations: 3,
+    membersPerLocation: 220,
+    arpu: 2500,
+    retentionLift: 2.8,
+    coachHoursSavedPerWeek: 12,
+    coachHourlyCost: 800,
+    platformCostPerLocation: 65000,
+  });
+
+  const totalMembers = inputs.locations * inputs.membersPerLocation;
+  const monthlyLaborValue = inputs.locations * inputs.coachHoursSavedPerWeek * 4.33 * inputs.coachHourlyCost;
+  const monthlyRetentionValue = totalMembers * inputs.arpu * (inputs.retentionLift / 100);
+  const monthlyValue = monthlyLaborValue + monthlyRetentionValue;
+  const monthlyCost = inputs.locations * inputs.platformCostPerLocation;
+  const monthlyNet = monthlyValue - monthlyCost;
+  const annualNet = monthlyNet * 12;
+  const annualCost = monthlyCost * 12;
+  const roiPct = annualCost > 0 ? (annualNet / annualCost) * 100 : 0;
+  const paybackMonths = monthlyValue > 0 ? monthlyCost / monthlyValue : null;
+
+  const money = (n) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
+  const num = (n) => new Intl.NumberFormat('en-IN').format(Math.round(n));
+  const goPage = (path) => (e) => {
+    e.preventDefault();
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  const setVal = (k) => (e) => setInputs((prev) => ({ ...prev, [k]: Number(e.target.value) }));
+
+  return (
+    <>
+      <section className="sp" style={{
+        minHeight: '82vh', display: 'flex', alignItems: 'center',
+        background: 'var(--bg)', paddingTop: 140, paddingBottom: 110,
+        paddingLeft: 80, paddingRight: 80, transition: 'background .4s ease',
+      }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', width: '100%' }}>
+          <span className="tag r">ROI</span>
+          <h1 className="r" style={{
+            fontSize: 'clamp(56px, 10vw, 118px)', fontWeight: 700,
+            lineHeight: .95, letterSpacing: '-.034em',
+            color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s',
+          }}>
+            Prove impact.<br />
+            <span style={{ color: 'var(--a)' }}>Before rollout.</span>
+          </h1>
+          <p className="r" style={{
+            fontSize: 'clamp(16px, 1.8vw, 20px)', color: 'var(--sub)', lineHeight: 1.72,
+            maxWidth: 560, marginTop: 36, fontWeight: 300, transition: 'color .4s ease',
+            transitionDelay: '.16s',
+          }}>
+            A B2B ROI calculator for gyms, coaching teams, and multi-location operators evaluating Genyx deployment.
+          </p>
+        </div>
+      </section>
+
+      <section className="sp" style={{
+        background: 'var(--bg2)', paddingTop: 90, paddingBottom: 120,
+        paddingLeft: 80, paddingRight: 80, transition: 'background .4s ease',
+      }}>
+        <div className="roi-wrap" style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div className="roi-grid">
+            <div className="roi-card r">
+              <div className="contact-sec-lbl">Business Inputs</div>
+              <div className="div" />
+
+              <label className="contact-lbl">Facilities</label>
+              <div className="contact-range-val">{num(inputs.locations)} locations</div>
+              <input className="contact-range" type="range" min="1" max="60" step="1" value={inputs.locations} onChange={setVal('locations')} data-h />
+
+              <label className="contact-lbl" style={{ marginTop: 8 }}>Members per location</label>
+              <div className="contact-range-val">{num(inputs.membersPerLocation)} members</div>
+              <input className="contact-range" type="range" min="1" max="2000" step="1" value={inputs.membersPerLocation} onChange={setVal('membersPerLocation')} data-h />
+
+              <div className="contact-grid-2">
+                <div>
+                  <label className="contact-lbl">ARPU / month (INR)</label>
+                  <input className="fi" type="number" min="100" max="100000" value={inputs.arpu} onChange={setVal('arpu')} data-h />
+                </div>
+                <div>
+                  <label className="contact-lbl">Retention lift %</label>
+                  <input className="fi" type="number" min="0" max="20" step="0.1" value={inputs.retentionLift} onChange={setVal('retentionLift')} data-h />
+                </div>
+              </div>
+
+              <div className="contact-sec-lbl">Operational Inputs</div>
+              <div className="div" />
+
+              <div className="contact-grid-2">
+                <div>
+                  <label className="contact-lbl">Coach hours saved / week</label>
+                  <input className="fi" type="number" min="0" max="120" value={inputs.coachHoursSavedPerWeek} onChange={setVal('coachHoursSavedPerWeek')} data-h />
+                </div>
+                <div>
+                  <label className="contact-lbl">Coach hourly cost (INR)</label>
+                  <input className="fi" type="number" min="100" max="10000" value={inputs.coachHourlyCost} onChange={setVal('coachHourlyCost')} data-h />
+                </div>
+              </div>
+
+              <label className="contact-lbl">Genyx cost / location / month (INR)</label>
+              <input className="fi" type="number" min="1000" max="500000" value={inputs.platformCostPerLocation} onChange={setVal('platformCostPerLocation')} data-h />
+            </div>
+
+            <aside className="roi-card r" style={{ transitionDelay: '.08s' }}>
+              <div className="contact-sec-lbl">Projected Outcome</div>
+              <div className="div" />
+
+              <div className="roi-kpi-grid">
+                <div className="roi-kpi">
+                  <div className="roi-kpi-l">Monthly Value</div>
+                  <div className="roi-kpi-v">{money(monthlyValue)}</div>
+                </div>
+                <div className="roi-kpi">
+                  <div className="roi-kpi-l">Monthly Platform Cost</div>
+                  <div className="roi-kpi-v">{money(monthlyCost)}</div>
+                </div>
+                <div className="roi-kpi">
+                  <div className="roi-kpi-l">Net Monthly Impact</div>
+                  <div className="roi-kpi-v">{money(monthlyNet)}</div>
+                </div>
+                <div className="roi-kpi">
+                  <div className="roi-kpi-l">Annual Net Impact</div>
+                  <div className="roi-kpi-v">{money(annualNet)}</div>
+                </div>
+              </div>
+
+              <div className="div" />
+              <div className="roi-split">
+                <div>
+                  <div className="roi-mini-l">Annual ROI</div>
+                  <div className="roi-mini-v">{roiPct.toFixed(1)}%</div>
+                </div>
+                <div>
+                  <div className="roi-mini-l">Payback</div>
+                  <div className="roi-mini-v">{paybackMonths ? `${paybackMonths.toFixed(1)} months` : 'N/A'}</div>
+                </div>
+              </div>
+
+              <div className="div" />
+              <div className="roi-list">
+                <div>• Labor value/month: {money(monthlyLaborValue)}</div>
+                <div>• Retention value/month: {money(monthlyRetentionValue)}</div>
+                <div>• Athletes covered: {num(totalMembers)}</div>
+              </div>
+
+              <a href="/contact" onClick={goPage('/contact')} className="cp contact-submit" data-h style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>
+                <span>Discuss ROI Assumptions →</span>
+              </a>
+            </aside>
           </div>
         </div>
       </section>

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { CSS } from './styles/siteCss';
 import { Cursor, Nav } from './components/LayoutChrome';
-import { HomePage, PlatformPage, AnalyticsPage, AboutPage, ContactPage } from './pages/SitePages';
+import { HomePage, PlatformPage, AnalyticsPage, ROIPage, AboutPage, ContactPage } from './pages/SitePages';
 
 const pageToPath = {
   home: '/',
   platform: '/platform',
   analytics: '/analytics',
+  roi: '/roi',
   about: '/about',
   contact: '/contact',
 };
@@ -15,6 +16,7 @@ const pathToPage = {
   '/': 'home',
   '/platform': 'platform',
   '/analytics': 'analytics',
+  '/roi': 'roi',
   '/about': 'about',
   '/contact': 'contact',
 };
@@ -64,6 +66,7 @@ export default function App() {
         {page === 'home' && <HomePage />}
         {page === 'platform' && <PlatformPage />}
         {page === 'analytics' && <AnalyticsPage />}
+        {page === 'roi' && <ROIPage />}
         {page === 'about' && <AboutPage />}
         {page === 'contact' && <ContactPage />}
       </main>
