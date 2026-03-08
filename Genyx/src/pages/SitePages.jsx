@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useReveal } from '../hooks/useReveal';
 import ArduCamModule3 from '../components/ArduCamModule3';
-import podSpec from '../assets/pod2.jpeg';
+import podSpec1 from '../assets/po3.jpeg';
+import podSpec2 from '../assets/po4.jpeg';
 import mobileHandImg from '../assets/Mobile.jpeg';
 import kushKadhyanImg from '../assets/kush Sir.jpeg';
 import siddarthaImg from '../assets/lastest_siddhart.jpeg';
@@ -259,7 +260,7 @@ function PodSection() {
                             maxWidth: 340, lineHeight: 1.72, fontWeight: 300,
                             paddingBottom: 6, transition: 'color .4s ease',
                         }}>
-                            Fixed mount or floor standing. AI-native. No configuration required per user.
+                            Fixed mount or floor standing. AI native. No configuration required per user.
                         </p>
                     </div>
                 </div>
@@ -357,23 +358,39 @@ function PodSpec() {
                     </div>
                 </div>
 
-                {/* Full-width spec image */}
-                <div className="r" style={{
-                    position: 'relative', borderRadius: 20, overflow: 'hidden',
-                    background: 'var(--bg2)', transitionDelay: '.14s',
+                {/* Side-by-side spec images */}
+                <div className="r g2" style={{
+                    display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16,
+                    transitionDelay: '.14s',
                 }}>
-                    <img
-                        src={podSpec}
-                        alt="Genyx Pod technical specifications - floor stand with Genyx Hardware, ball head, height adjustment"
-                        style={{ width: '100%', display: 'block', objectFit: 'cover' }}
-                    />
-                    {/* Subtle border overlay */}
-                    <div style={{
-                        position: 'absolute', inset: 0,
-                        borderRadius: 20,
-                        boxShadow: 'inset 0 0 0 1px var(--bd)',
-                        pointerEvents: 'none',
-                    }} />
+                    <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', background: 'var(--bg2)' }}>
+                        <img
+                            src={podSpec1}
+                            alt="Genyx Pod technical specifications - detail 1"
+                            style={{ width: '100%', display: 'block', objectFit: 'contain' }}
+                        />
+                        {/* Subtle border overlay */}
+                        <div style={{
+                            position: 'absolute', inset: 0,
+                            borderRadius: 20,
+                            boxShadow: 'inset 0 0 0 1px var(--bd)',
+                            pointerEvents: 'none',
+                        }} />
+                    </div>
+                    <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', background: 'var(--bg2)' }}>
+                        <img
+                            src={podSpec2}
+                            alt="Genyx Pod technical specifications - detail 2"
+                            style={{ width: '100%', display: 'block', objectFit: 'contain' }}
+                        />
+                        {/* Subtle border overlay */}
+                        <div style={{
+                            position: 'absolute', inset: 0,
+                            borderRadius: 20,
+                            boxShadow: 'inset 0 0 0 1px var(--bd)',
+                            pointerEvents: 'none',
+                        }} />
+                    </div>
                 </div>
 
                 {/* Spec pills below image */}
@@ -690,7 +707,7 @@ function HowItWorks() {
                 </div>
                 {[
                     ['Genyx Hardware captures movement', 'Fixed overhead or side angle. No setup. No per user calibration. Plug in, point, run.'],
-                    ['AI extracts rep level signals in real time', 'Joint angles, velocity curves, timing rep by rep as the set unfolds. Frame-level accuracy.'],
+                    ['AI extracts rep level signals in real time', 'Joint angles, velocity curves, timing rep by rep as the set unfolds. Frame level accuracy.'],
                     ['Intelligence delivered instantly', 'Live signals to the display in under 200ms. Full post session analytics within seconds.'],
                 ].map(([title, desc], i) => (
                     <div key={i}>
@@ -749,22 +766,22 @@ function AppPreview() {
             </div>
 
             {/* Handset preview - live screen fitted into in-hand phone */}
-            <div className="app-hand-zone">
-                <div className="app-hand-glow" />
-                <div className="app-hand-wrap r" style={{ transitionDelay: '.16s' }}>
-                    <div className="app-live-screen">
-                        <video
-                            src={DEMO_VIDEO}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                        />
-                    </div>
-                    <img src={mobileHandImg} alt="Athlete holding Genyx live training intelligence mobile view" className="app-hand-img" />
-                </div>
-            </div>
+<div className="app-hand-zone">
+    <div className="app-hand-glow" />
+    <div className="app-hand-wrap r" style={{ transitionDelay: '.16s' }}>
+        <img src={mobileHandImg} alt="Athlete holding Genyx live training intelligence mobile view" className="app-hand-img" />
+        <div className="app-live-screen">
+            <video
+                src={DEMO_VIDEO}
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+        </div>
+    </div>
+</div>
 
             {/* CTA */}
             <div className="sp r" style={{
@@ -794,81 +811,137 @@ function Testimonials() {
     useReveal();
     const items = [
         {
-            quote: 'We used to film sets and review them post-session. With Genyx, I get joint angle data and fatigue flags live, mid-set. It completely changed how I programme deloads.',
-            name: 'Rohit Sharma',
-            role: 'Head S&C Coach, Bengaluru Sports Academy',
+            quote: 'Genyx completely changed the way I train. The AI motion tracking ses every rep and gives instant feedback on my form. It feels like having a personal trainer with me every day.',
+            name: 'Rajesh Kumar',
+            role: 'Fitness Enthusiast, Mumbai',
             img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80',
         },
         {
-            quote: 'My athletes stopped questioning my feedback once they could see the rep quality score themselves. Genyx made coaching conversations data-driven, not opinion-driven.',
-            name: 'Priya Nair',
-            role: 'Sports Scientist, ProFit Performance Lab, Mumbai',
+            quote: 'I used to struggle with maintaining correct posture during workouts. With Genyx\'s real-time analysis, I can see exactly where I need to improve. My workouts are now safer and more effective.',
+            name: 'Priya Sharma',
+            role: 'Software Engineer, Bengaluru',
             img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=160&q=80',
         },
         {
-            quote: 'No sensors on the body, no calibration per athlete - that was the deal-breaker for us. We onboard 40+ new members a month. Genyx just works from day one.',
-            name: 'Arjun Mehta',
-            role: 'Founder & Head Coach, Iron Tribe Fitness, Delhi',
+            quote: 'The rep counting and movement tracking are incredibly accurate. Genyx helped me stay consistent and track my progress in a way no other fitness app has.',
+            name: 'Arjun Patel',
+            role: 'Marketing Professional, Delhi',
             img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=160&q=80',
         },
         {
-            quote: 'I trialled every wearable on the market for two years. Nothing stuck with my athletes. Genyx removed the friction entirely - they just train and I get everything I need.',
-            name: 'James Whitfield',
-            role: 'Performance Director, Elevate Athletic, London',
-            img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80',
-        },
-        {
-            quote: 'The velocity curve data per rep is something I previously only got in a university lab. Now I have it on a floor stand in my facility. That shift is massive for Indian sport.',
-            name: 'Kavitha Rajan',
-            role: 'Lead Physiotherapist, Chennai Athletic Rehab Centre',
+            quote: 'What I love most about Genyx is the AI feedback. It tells me when my form is off and helps me correct it instantly. This has significantly improved my strength training.',
+            name: 'Kavya Reddy',
+            role: 'Yoga Instructor, Hyderabad',
             img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80',
         },
         {
-            quote: 'We deployed across three locations in Pune and the dashboard unified everything. I coach remotely now with more confidence than I had standing on the floor before Genyx.',
-            name: 'Vikram Desai',
-            role: 'Director of Coaching, FitStaq Gyms, Pune',
+            quote: 'Genyx feels like a smart fitness coach. The analytics and performance insights help me understand my workouts and push myself further every session.',
+            name: 'Vikram Singh',
+            role: 'Business Analyst, Pune',
             img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80',
+        },
+        {
+            quote: 'As someone who works out at home, Genyx is a game-changer. The motion tracking ensures I\'m doing exercises correctly without needing a physical trainer.',
+            name: 'Ananya Iyer',
+            role: 'Graphic Designer, Chennai',
+            img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80',
+        },
+        {
+            quote: 'I\'ve tried many fitness apps, but Genyx stands out because of its intelligent movement analysis and personalized feedback. It truly elevates the training experience.',
+            name: 'Rohan Deshmukh',
+            role: 'Student, Kolkata',
+            img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80',
         },
     ];
     const loopItems = [...items, ...items];
 
     return (
-        <section className="sp sec" style={{
-            background: 'var(--bg2)', paddingTop: 140, paddingBottom: 140,
-            paddingLeft: 80, paddingRight: 80, transition: 'background .4s ease',
-        }}>
-            <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-                <div style={{ marginBottom: 44 }}>
-                    <span className="tag r">Testimonials</span>
-                    <h2 className="r" style={{
-                        fontSize: 'clamp(38px, 6vw, 72px)', fontWeight: 700,
-                        letterSpacing: '-.028em', lineHeight: .98,
-                        color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s',
-                    }}>
-                        Trusted by coaches.
-                    </h2>
-                </div>
+        <>
+            <section className="sp sec" style={{
+                background: 'var(--bg2)', paddingTop: 140, paddingBottom: 140,
+                paddingLeft: 80, paddingRight: 80, transition: 'background .4s ease',
+            }}>
+                <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+                    <div style={{ marginBottom: 44 }}>
+                        <span className="tag r">Testimonials</span>
+                        <h2 className="r" style={{
+                            fontSize: 'clamp(38px, 6vw, 72px)', fontWeight: 700,
+                            letterSpacing: '-.028em', lineHeight: .98,
+                            color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s',
+                        }}>
+                            Loved by users.
+                        </h2>
+                    </div>
 
-                <div className="tm-wrap r" style={{ transitionDelay: '.15s' }}>
-                    <div className="tm-track">
-                        {loopItems.map((t, i) => (
-                            <article key={i} className="tm-card">
-                                <p style={{ fontSize: 15, color: 'var(--txt)', lineHeight: 1.74, marginBottom: 18, transition: 'color .4s ease' }}>
+                    <div className="tm-wrap r" style={{ transitionDelay: '.15s' }}>
+                        <div className="tm-track">
+                            {loopItems.map((t, i) => (
+                                <article key={i} className="tm-card">
+                                    <p style={{ fontSize: 15, color: 'var(--txt)', lineHeight: 1.74, marginBottom: 18, transition: 'color .4s ease' }}>
+                                        "{t.quote}"
+                                    </p>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                                        <img src={t.img} alt={t.name} className="tm-avatar" loading="lazy" />
+                                        <div>
+                                            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--txt)', transition: 'color .4s ease' }}>{t.name}</div>
+                                            <div style={{ fontSize: 11, color: 'var(--sub)', transition: 'color .4s ease' }}>{t.role}</div>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="sp sec" style={{
+                background: 'var(--bg)', paddingTop: 140, paddingBottom: 140,
+                paddingLeft: 80, paddingRight: 80, transition: 'background .4s ease',
+            }}>
+                <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+                    <div style={{ marginBottom: 56 }}>
+                        <span className="tag r">Enterprise</span>
+                        <h2 className="r" style={{
+                            fontSize: 'clamp(38px, 6vw, 72px)', fontWeight: 700,
+                            letterSpacing: '-.028em', lineHeight: .98,
+                            color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s',
+                        }}>
+                            Trusted by organizations.
+                        </h2>
+                    </div>
+
+                    <div className="g2r" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: 'var(--div)', borderRadius: 20, overflow: 'hidden' }}>
+                        {[
+                            {
+                                quote: 'We tested Genyx during a small pilot with our training group, and the motion tracking worked surprisingly well. The ability to analyse form in real time made the sessions more engaging for everyone.',
+                                name: 'Neha Kapoor',
+                                role: 'VP Product, HealthFirst India, Mumbai',
+                                img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=160&q=80',
+                            },
+                            {
+                                quote: 'As part of a pilot program, we integrated Genyx into a few training sessions. The feedback system helped participants correct their posture quickly without needing constant trainer supervision.',
+                                name: 'Karthik Menon',
+                                role: 'Head of Innovation, WellnessHub, Hyderabad',
+                                img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=160&q=80',
+                            },
+                        ].map((t, i) => (
+                            <div key={i} className="r" style={{ background: 'var(--card)', padding: '40px 36px', transition: 'background .4s ease', transitionDelay: `${.08 + i * .1}s` }}>
+                                <p style={{ fontSize: 15, color: 'var(--txt)', lineHeight: 1.74, marginBottom: 24, transition: 'color .4s ease' }}>
                                     "{t.quote}"
                                 </p>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                                    <img src={t.img} alt={t.name} className="tm-avatar" loading="lazy" />
+                                    <img src={t.img} alt={t.name} style={{ width: 48, height: 48, borderRadius: '50%', objectFit: 'cover' }} loading="lazy" />
                                     <div>
                                         <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--txt)', transition: 'color .4s ease' }}>{t.name}</div>
                                         <div style={{ fontSize: 11, color: 'var(--sub)', transition: 'color .4s ease' }}>{t.role}</div>
                                     </div>
                                 </div>
-                            </article>
+                            </div>
                         ))}
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
 
@@ -1994,11 +2067,11 @@ export function PlatformPage() {
                         fontSize: 'clamp(44px, 7vw, 80px)', fontWeight: 700,
                         letterSpacing: '-.028em', lineHeight: .98, marginBottom: 80,
                         color: 'var(--txt)', transition: 'color .4s ease', transitionDelay: '.08s',
-                    }}>Capture. Analyze.<br />Deliver.</h2>
+                    }}>Capture. Analyse.<br />Deliver.</h2>
 
                     {[
                         ['Capture', 'The Genyx Pod mounts in your facility floor stand or fixed. Point it at the platform. No per athlete setup. No wearables. Genyx Hardware starts reading movement the moment training begins.'],
-                        ['Analyze', 'Computer vision AI processes every frame in real time. Joint angles, velocity curves, rep timing, range of motion, extracted rep by rep. The system understands the difference between a clean lift and a compromised one.'],
+                        ['Analyse', 'Computer vision AI processes every frame in real time. Joint angles, velocity curves, rep timing, range of motion, extracted rep by rep. The system understands the difference between a clean lift and a compromised one.'],
                         ['Deliver', 'Signals reach your display in under 200ms. Coaches see quality scores, fatigue state, and rep level data live while the set is happening. Full analytics hit the dashboard the moment the session ends.'],
                     ].map(([title, desc], i) => (
                         <div key={i}>

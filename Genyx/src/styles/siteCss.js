@@ -186,19 +186,37 @@ a, button { cursor: none; text-decoration: none; }
 .app-hand-wrap {
   position: relative; z-index: 2;
   width: min(430px, 88vw);
+  --screen-left: 19%;
+  --screen-right: 19%;
+  --screen-top: 6.6%;
+  --screen-bottom: 8.4%;
+  --screen-radius: clamp(30px, 8.8vw, 42px);
 }
 .app-hand-img {
   width: 100%; height: auto; display: block;
+  position: relative; z-index: 4;
   filter: drop-shadow(0 42px 96px rgba(0,0,0,.8));
 }
 .app-live-screen {
-  position: absolute; z-index: 3; overflow: hidden;
-  left: 17.6%; right: 17.6%;
-  top: 5.8%; bottom: 5.6%;
-  border-radius: clamp(28px, 8.6vw, 62px);
-  clip-path: inset(0 round clamp(28px, 8.6vw, 62px));
+  position: absolute; z-index: 2;
+  left: var(--screen-left);
+  right: var(--screen-right);
+  top: var(--screen-top);
+  bottom: var(--screen-bottom);
+  border-radius: var(--screen-radius);
+  clip-path: inset(0 round var(--screen-radius));
+  overflow: hidden;
   border: 1px solid rgba(255,255,255,0.16);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 18px 44px rgba(0,0,0,0.42), 0 0 20px rgba(77,255,239,0.08);
+}
+.app-live-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  display: block;
+  transform: scale(1.015);
+  transform-origin: center center;
 }
 .tm-wrap { position: relative; overflow: hidden; }
 .tm-wrap::before, .tm-wrap::after {
@@ -467,12 +485,13 @@ a, button { cursor: none; text-decoration: none; }
   .sc-p { padding:20px!important; }
   .g2r { grid-template-columns:1fr!important; }
   .g4r { grid-template-columns:1fr!important; }
-  .app-hand-wrap { width:min(340px, 92vw)!important; }
-  .app-live-screen {
-    left:17.6%!important; right:17.6%!important;
-    top:5.8%!important; bottom:5.6%!important;
-    border-radius:clamp(28px, 8.6vw, 62px)!important;
-    clip-path:inset(0 round clamp(28px, 8.6vw, 62px))!important;
+  .app-hand-wrap {
+    width:min(340px, 92vw)!important;
+    --screen-left: 19%;
+    --screen-right: 19%;
+    --screen-top: 6.6%;
+    --screen-bottom: 8.4%;
+    --screen-radius: clamp(30px, 8.8vw, 42px);
   }
   .tm-wrap::before, .tm-wrap::after { width: 30px!important; }
   .pod-strip { grid-template-columns:1fr!important; }
