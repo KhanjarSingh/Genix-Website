@@ -193,9 +193,10 @@ a, button { cursor: none; text-decoration: none; }
 }
 .app-live-screen {
   position: absolute; z-index: 3; overflow: hidden;
-  left: 17.2%; right: 17.2%;
-  top: 4.9%; bottom: 5.4%;
-  border-radius: 56px;
+  left: 17.6%; right: 17.6%;
+  top: 5.8%; bottom: 5.6%;
+  border-radius: clamp(28px, 8.6vw, 62px);
+  clip-path: inset(0 round clamp(28px, 8.6vw, 62px));
   border: 1px solid rgba(255,255,255,0.16);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 18px 44px rgba(0,0,0,0.42), 0 0 20px rgba(77,255,239,0.08);
 }
@@ -468,9 +469,10 @@ a, button { cursor: none; text-decoration: none; }
   .g4r { grid-template-columns:1fr!important; }
   .app-hand-wrap { width:min(340px, 92vw)!important; }
   .app-live-screen {
-    left:17.4%!important; right:17.4%!important;
-    top:5.3%!important; bottom:5.8%!important;
-    border-radius:36px!important;
+    left:17.6%!important; right:17.6%!important;
+    top:5.8%!important; bottom:5.6%!important;
+    border-radius:clamp(28px, 8.6vw, 62px)!important;
+    clip-path:inset(0 round clamp(28px, 8.6vw, 62px))!important;
   }
   .tm-wrap::before, .tm-wrap::after { width: 30px!important; }
   .pod-strip { grid-template-columns:1fr!important; }
