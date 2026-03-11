@@ -186,3 +186,4 @@ app.get('/api/health', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Genyx backend running on http://localhost:${PORT}`);
 });
+// Trigger Hostinger Deployment
